@@ -443,6 +443,7 @@ def resize_image(image, min_dim=None, max_dim=None, min_scale=None, mode="square
             scale = max_dim / image_max
 
     # Resize image using bilinear interpolation
+    # problem continues here
     if scale != 1:
         image = resize(image, (round(h * scale), round(w * scale)),
                        preserve_range=True)
@@ -893,16 +894,18 @@ def resize(image, output_shape, order=1, mode='constant', cval=0, clip=True,
     of skimage. This solves the problem by using different parameters per
     version. And it provides a central place to control resizing defaults.
     """
+    
+
     if LooseVersion(skimage.__version__) >= LooseVersion("0.14"):
-        # New in 0.14: anti_aliasing. Default it to False for backward
-        # compatibility with skimage 0.13.
+            # New in 0.14: anti_aliasing. Default it to False for backward
+            # compatibility with skimage 0.13.
         return skimage.transform.resize(
-            image, output_shape,
-            order=order, mode=mode, cval=cval, clip=clip,
-            preserve_range=preserve_range, anti_aliasing=anti_aliasing,
-            anti_aliasing_sigma=anti_aliasing_sigma)
+                image, output_shape,
+                order=order, mode=mode, cval=cval, clip=clip,
+                preserve_range=preserve_range, anti_aliasing=anti_aliasing,
+                anti_aliasing_sigma=anti_aliasing_sigma)
     else:
         return skimage.transform.resize(
-            image, output_shape,
-            order=order, mode=mode, cval=cval, clip=clip,
-            preserve_range=preserve_range)
+                image, output_shape,
+                order=order, mode=mode, cval=cval, clip=clip,
+                preserve_range=preserve_range)
