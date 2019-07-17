@@ -84,7 +84,7 @@ class SeaLionConfig(Config):
     NAME = "sealions"
 
     # Adjust depending on your GPU memory
-    IMAGES_PER_GPU = 8
+    IMAGES_PER_GPU = 2
     GPU_COUNT = 1
 
     # Number of classes (including background)
