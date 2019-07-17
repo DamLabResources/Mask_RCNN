@@ -88,7 +88,7 @@ class SeaLionConfig(Config):
     GPU_COUNT = 1
 
     # Number of classes (including background)
-    NUM_CLASSES = 1 + 7  # Background + nucleus
+    NUM_CLASSES = 1 + 8  # Background + nucleus
 
     # Number of training and validation steps per epoch
     STEPS_PER_EPOCH = 100
