@@ -144,6 +144,11 @@ class SeaLionConfig(Config):
     # Max number of final detections per image
     DETECTION_MAX_INSTANCES = 400
 
+    BASE_LR: 0.0025
+    STEPS: (480000, 640000)
+    MAX_ITER: 720000
+
+
 
 class SeaLionInferenceConfig(SeaLionConfig):
     # Set batch size to 1 to run one image at a time
