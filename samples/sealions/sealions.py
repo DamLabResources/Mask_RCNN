@@ -88,7 +88,7 @@ class SeaLionConfig(Config):
     GPU_COUNT = 1
 
     # Number of classes (including background)
-    NUM_CLASSES = 7  # Background + nucleus
+    NUM_CLASSES = 1+7  # Background + 7 things
 
     # Number of training and validation steps per epoch
     STEPS_PER_EPOCH = 100
@@ -221,7 +221,7 @@ class CocoDataset(utils.Dataset):
         ids = []
         for annot in self.coco_info['annotations']:
             if annot['image_id'] == img_info['id']:
-                ids.append(annot['category_id']+1)
+                ids.append(annot['category_id'])
                 img = np.zeros(shape=(img_info['height'], 
                                           img_info['width']), 
                                dtype = np.int32)
